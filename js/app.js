@@ -7,6 +7,12 @@ canvas.height = 700;
 let scoreTracker = 0
 ctx.font = '50px arial'
 
+let test = 'test'
+
+
+
+
+
 const img = document.getElementById('doodle')
 const jetpack = document.getElementById('jetpack')
 const platform = document.getElementById('platform')
