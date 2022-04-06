@@ -5,14 +5,14 @@ const obstacles = {
     y: 200,
     width: 50,
     height: 15,
-    obstacleItemSpeed: 40,
+    speed: 0.28,
     obstacleMoveState: false, 
     color: '#600000',
     update(progress) {
 
         if (player.y < 300) {
             obstacleArray.map((value) => {
-                value.y += progress * 0.28
+                value.y += progress * obstacles.speed
             })
         }  
 

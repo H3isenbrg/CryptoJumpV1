@@ -18,7 +18,7 @@ function update(progress) {
     obstacles.update(progress)
     obstacles.createLvl1()
     items.update(progress)
-    
+    items.springcoil(progress)
     
 }
 
@@ -28,9 +28,8 @@ function draw() {
     ctx.fillRect(0,0, canvas.width, canvas.height)
     canvasDrawbackground()
     obstacles.draw()
-    player.draw()
     items.draw()
-    
+    player.draw()
     
 }
 
