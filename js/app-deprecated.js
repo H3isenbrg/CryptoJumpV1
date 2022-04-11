@@ -1268,3 +1268,48 @@ obstacles.spawnStartMonsters();
 mainLoop()
 
 setInterval(mainLoop, 1000 / 120)
+
+
+// Old code for moving obstacles that didnt work
+
+ // let initialArray = JSON.parse(JSON.stringify(obstacleArray));
+            
+        //         let moveRight = () => {
+                    
+        //             for (i = 0; i < obstacleArray.length; i++) {
+                        
+        //                 for (i = 0; i < initialArray.length; i++) {
+                            
+        //                     if (obstacleArray[1].x < initialArray[1].x + 100) {
+                                
+        //                         obstacleArray[i].x += 1
+                                
+        //                     } else {
+                                
+        //                     }
+
+        //                 }
+
+        //             }
+
+        //             // if (obstacleArray[i].x < initialArray[i].x + 100) {
+        //             //     requestAnimationFrame(moveRight)
+        //             // } else {
+        //             //  moveLeft()
+        //             // }
+
+        //         }
+
+        //         let moveLeft = () => {
+                    
+        //             obstacleArray[i].x -= 10
+                    
+        //             // if (obstacleArray[i].x > initialArray[i].x - 100) {
+        //                     // requestAnimationFrame(moveLeft)
+        //             // } else {
+        //             //         moveRight()
+        //             // }
+
+        //         }
+
+        //         moveRight()    

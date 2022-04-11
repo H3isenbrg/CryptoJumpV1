@@ -9,6 +9,7 @@ function drawRect(x, y, width, height, color) {
 const initGame = (() => {
     player.start()
     obstacles.createStart()
+    // obstacles.move()
 })()
 
 function update(progress) {
@@ -19,7 +20,9 @@ function update(progress) {
     obstacles.createLvl1()
     items.update(progress)
     items.springcoil(progress)
-    
+    items.helicopter(progress)
+    items.jetpack(progress)
+    items.jumpBoots(progress)
 }
 
 function draw() {

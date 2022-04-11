@@ -5,7 +5,7 @@ const obstacles = {
     y: 200,
     width: 50,
     height: 15,
-    speed: 0.28,
+    speed: 0.42,
     obstacleMoveState: false, 
     color: '#600000',
     update(progress) {
@@ -65,6 +65,66 @@ const obstacles = {
             items.spawn() 
 
         }
+
+    },
+    move() {
+        
+        let moveRight = () => {
+
+            let start = Date.now()
+
+            let initRight = () => {
+
+                obstacleArray.map((value) => {
+                    value.x += 2.5
+                })
+
+                springcoilArray.map((value) => {
+                    value.x += 2.5
+                })
+
+                let current = Date.now()
+
+                if(current - start < 2000) {
+                requestAnimationFrame(initRight)
+                } else {
+                    moveLeft()
+                }
+
+            }
+
+            initRight()
+        }
+
+        let moveLeft = () => {
+
+            let start = Date.now()
+
+            let initLeft = () => {
+
+                obstacleArray.map((value) => {
+                    value.x -= 2.5
+                })
+
+                springcoilArray.map((value) => {
+                    value.x -= 2.5
+                })
+
+                let current = Date.now()
+
+                if(current - start < 2000) {
+                requestAnimationFrame(initLeft)
+                } else {
+                    moveRight()
+                }
+
+            }
+
+            initLeft()
+    
+        }
+
+        moveRight()              
 
     },
     draw(){

@@ -40,8 +40,8 @@ const player = {
         
         for (i = 0; i < obstacleArray.length; i++) {
 
-            if (player.y + player.height > obstacleArray[i].y && player.y + player.height - 5 < obstacleArray[i].y + obstacleArray[i].height
-                && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 0.3 && items.inUse === false) {
+            if (player.y + player.height > obstacleArray[i].y && player.y + player.height - 20 < obstacleArray[i].y + obstacleArray[i].height
+                && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 0.5 && items.inUse === false) {
                     
                 player.dy = player.jumpPower;
 
