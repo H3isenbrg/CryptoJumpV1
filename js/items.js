@@ -186,11 +186,14 @@ const items = {
             if (player.y + player.height > springcoilArray[i].y && player.y + player.height - 5 < springcoilArray[i].y + springcoilArray[i].height &&
                 player.x + player.width >= springcoilArray[i].x && player.x - player.width < springcoilArray[i].x && player.dy > 0.3 && items.inUse === false) {
                     
-                    player.dy = player.jumpPower * 1.25
+                    player.dy = player.jumpPower * 1.5
                     let start = Date.now()
                     items.inUse = true
                     
                     let initSpringcoil = () => {
+
+                        scoreTracker.score += progress * 1.1 * scoreTracker.lowerNumber
+                        scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
                         
                         obstacleArray.map((value) => {
                             value.y += progress * 1.1
@@ -217,7 +220,49 @@ const items = {
                         if (current - start < 500) {
                             requestAnimationFrame(initSpringcoil)
                         } else {
-                            items.inUse = false
+
+                                let start = Date.now()
+                            
+                                let initSpringcoilSlow = () => {
+                                
+                                player.gravity = 0.0015
+
+                                scoreTracker.score += progress * 0.5 * scoreTracker.lowerNumber
+                                scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
+
+                                obstacleArray.map((value) => {
+                                value.y += progress * 0.5
+                                })
+        
+                                springcoilArray.map((value) => {
+                                value.y += progress * 0.5
+                                })
+        
+                                helicopterArray.map((value) => {
+                                value.y += progress * 0.5
+                                })
+
+                                jumpbootsArray.map((value) => {
+                                value.y += progress * 0.5
+                                })
+        
+                                jetpackArray.map((value) => {
+                                value.y += progress * 0.5
+                                })
+                                
+                                let current = Date.now()
+                                
+                                if (current - start < 250) {
+                                requestAnimationFrame(initSpringcoilSlow)
+                                } else {
+                                items.inUse = false
+                                player.gravity = 0.003
+                                }
+
+                            }
+
+                        initSpringcoilSlow()
+                            
                         }
 
                     }
@@ -265,6 +310,9 @@ const items = {
 
                     let initHelicopter = () => {
                         
+                        scoreTracker.score += progress * 0.75 * scoreTracker.lowerNumber
+                        scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
+                    
                         obstacleArray.map((value) => {
                             value.y += progress * 0.75
                         })
@@ -306,7 +354,7 @@ const items = {
 
     },
     jetpack(progress) {
-
+        
         for (i = 0; i < jetpackArray.length; i++) {
             
             if (player.y + player.height > jetpackArray[i].y && player.y + player.height - 5 < jetpackArray[i].y + jetpackArray[i].height &&
@@ -339,6 +387,9 @@ const items = {
 
                     let initJetpack = () => {
                         
+                        scoreTracker.score += progress * 3 * scoreTracker.lowerNumber
+                        scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
+
                         obstacleArray.map((value) => {
                             value.y += progress * 3
                         })
@@ -368,6 +419,9 @@ const items = {
                             let start = Date.now()
 
                             let initJetpackSlow = () => {
+
+                                scoreTracker.score += progress * 0.5 * scoreTracker.lowerNumber
+                                scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
 
                                 obstacleArray.map((value) => {
                                     value.y += progress * 0.5
@@ -418,6 +472,30 @@ const items = {
     }, 
     jumpBoots(progress) {
 
+        if (player.y < 100 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.1
+        }
+
+        if (player.y > 100 && player.y <= 200 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.2
+        }
+
+        if (player.y > 200 && player.y <= 300 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.3
+        }
+
+        if (player.y > 300 && player.y <= 400 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.4
+        }
+
+        if (player.y > 400 && player.y < 500 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.5
+        }
+
+        if (player.y > 500 && items.usingJumpBoots === true) {
+            player.jumpPower *= 1.6   
+        }
+
         for (i = 0; i < jumpbootsArray.length; i++) {
             
             if (player.y + player.height > jumpbootsArray[i].y && player.y + player.height - 5 < jumpbootsArray[i].y + jumpbootsArray[i].height &&
@@ -427,7 +505,7 @@ const items = {
                     items.inUse = true
                     items.usingJumpBoots = true
                     jumpbootsArray.splice(i, 1)
-                   
+
                     let jumpbootsTimer = () => {
                         
                         current = Date.now()
@@ -449,37 +527,83 @@ const items = {
         for (i = 0; i < obstacleArray.length; i++) {
 
             if (player.y + player.height > obstacleArray[i].y && player.y + player.height - 20 < obstacleArray[i].y + obstacleArray[i].height
-                && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 0.5 && items.usingJumpBoots === true) {
-                    
-                player.dy = player.jumpPower * 1.25
+                && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 1 && items.usingJumpBoots === true) {
+                
+                player.dy = player.jumpPower
                 let start = Date.now()
                 
                 let initJumpboots = () => {
                     
+                    scoreTracker.score += progress * 1.1 * scoreTracker.lowerNumber
+                    scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
+
                     obstacleArray.map((value) => {
-                        value.y += progress * 1.25
+                        value.y += progress * 1.1
                     })
 
                     springcoilArray.map((value) => {
-                        value.y += progress * 1.25
+                        value.y += progress * 1.1
                     })
 
                     helicopterArray.map((value) => {
-                        value.y += progress * 1.25
+                        value.y += progress * 1.1
                     })
 
                     jumpbootsArray.map((value) => {
-                        value.y += progress * 1.25
+                        value.y += progress * 1.1
                     })
 
                     jetpackArray.map((value) => {
-                        value.y += progress * 1.25
+                        value.y += progress * 1.1
                     })
 
                     current = Date.now()
 
                     if (current - start < 500) {
                         requestAnimationFrame(initJumpboots)
+                    } else {
+
+                        let start = Date.now()
+
+                        let initJumpbootsSlow = () => {
+
+                            player.gravity = 0.0015
+
+                            scoreTracker.score += progress * 0.5 * scoreTracker.lowerNumber
+                            scoreTracker.scoreRounded = Math.ceil(scoreTracker.score)
+
+                            obstacleArray.map((value) => {
+                                value.y += progress * 0.5
+                            })
+        
+                            springcoilArray.map((value) => {
+                                value.y += progress * 0.5
+                            })
+        
+                            helicopterArray.map((value) => {
+                                value.y += progress * 0.5
+                            })
+
+                            jumpbootsArray.map((value) => {
+                                value.y += progress * 0.5
+                            })
+        
+                            jetpackArray.map((value) => {
+                                value.y += progress * 0.5
+                            })
+                                
+                            let current = Date.now()
+                                
+                            if (current - start < 250) {
+                                requestAnimationFrame(initJumpbootsSlow)
+                            } else {
+                                player.gravity = 0.003
+                            }
+                        
+                        }
+
+                        initJumpbootsSlow()
+
                     }
 
                 }

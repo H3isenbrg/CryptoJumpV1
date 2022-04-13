@@ -9,7 +9,7 @@ function drawRect(x, y, width, height, color) {
 const initGame = (() => {
     player.start()
     obstacles.createStart()
-    // obstacles.move()
+    obstacles.move()
 })()
 
 function update(progress) {
@@ -17,7 +17,7 @@ function update(progress) {
     player.jump()
     player.endGame()
     obstacles.update(progress)
-    obstacles.createLvl1()
+    scoreTracker.createLvl()
     items.update(progress)
     items.springcoil(progress)
     items.helicopter(progress)
@@ -30,6 +30,7 @@ function draw() {
     ctx.fillStyle = 'white'
     ctx.fillRect(0,0, canvas.width, canvas.height)
     canvasDrawbackground()
+    scoreTracker.draw()
     obstacles.draw()
     items.draw()
     player.draw()

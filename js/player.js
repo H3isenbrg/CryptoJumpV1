@@ -37,6 +37,12 @@ const player = {
         
     },
     jump() {
+
+        if (player.y < 300 && items.inUse === false) {
+            player.jumpPower = -0.85
+        }  else {
+            player.jumpPower = -1
+        }
         
         for (i = 0; i < obstacleArray.length; i++) {
 
@@ -48,6 +54,7 @@ const player = {
             } 
 
         }
+
         
     },
     draw() {
