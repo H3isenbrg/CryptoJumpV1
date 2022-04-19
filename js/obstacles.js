@@ -1,5 +1,62 @@
 let obstacleArray = []
-let obstacleMovingArray = []
+
+function createObstacle(x, y, dx, dy, width, height, type) {
+    this.x = x
+    this.y = y
+    this.dx = dx
+    this.dy = dy
+    this.width = width
+    this.height = height
+    this.type = type
+    this.move = function () {
+
+        let moveRight = () => {
+
+            let start = Date.now()
+
+            let initRight = () => {
+
+                this.dx = 1.5
+                
+                let current = Date.now()
+                
+                if(current - start < 1000) {
+                    requestAnimationFrame(initRight)
+                } else {
+                    moveLeft()
+                }
+            
+            }
+
+            initRight()
+        }
+
+        let moveLeft = () => {
+
+            let start = Date.now()
+
+            let initLeft = () => {
+
+                this.dx = -1.5
+
+                let current = Date.now()
+
+                if(current - start < 1000) {
+                    requestAnimationFrame(initLeft)
+                } else {
+                    moveRight()
+                }
+
+            }
+
+            initLeft()
+    
+        }
+
+        moveRight()             
+
+    }
+}
 
 const obstacles = {
     x: 200,
@@ -28,7 +85,7 @@ const obstacles = {
         }  
 
         for (i = 0; i < obstacleArray.length; i++) {
-
+            
             obstacleArray[i].x += obstacleArray[i].dx
 
             if (obstacleArray[i].x < - obstacles.width && obstacleArray[i].dx < 0) {
@@ -45,16 +102,10 @@ const obstacles = {
             
         }
 
-        for (i = 0; i < obstacleMovingArray.length; i++) {
-
-            if (obstacleMovingArray[i].y >= canvas.height + 100) {
-                obstacleMovingArray.splice(i, 1) 
-            }
-            
-        }
 
     },
-    createStart() {
+    createStart() {    
+
         obstacleAmount = new createObstacle(225, 650, 0, 0, 50, 15)
         obstacleArray.push(obstacleAmount)
         obstacleAmount = new createObstacle(300, 550, 0, 0, 50, 15)
@@ -79,63 +130,16 @@ const obstacles = {
         obstacleArray.push(obstacleAmount)
         obstacleAmount = new createObstacle(300, 300, 0, 0, 50, 15)
         obstacleArray.push(obstacleAmount)
-    },
-    move() {
-        
-        let moveRight = () => {
 
-            let start = Date.now()
-
-            let initRight = () => {
-
-                for (i = 0; i < obstacleMovingArray.length; i++) {
-                
-                    obstacleMovingArray[i].dx = 1.5
-                   
-                }
-                
-                let current = Date.now()
-                
-                if(current - start < 1000) {
-                    requestAnimationFrame(initRight)
-                } else {
-                    moveLeft()
-                }
+        // obstacleArray.map((value) => {
             
-            }
+        //     if (value.type === 'test')
+        //         value.move()
 
-            initRight()
-        }
-
-        let moveLeft = () => {
-
-            let start = Date.now()
-
-            let initLeft = () => {
-
-                for (i = 0; i < obstacleMovingArray.length; i++) {
-
-                    obstacleMovingArray[i].dx = -1.5
-
-                }
-
-                let current = Date.now()
-
-                if(current - start < 1000) {
-                    requestAnimationFrame(initLeft)
-                } else {
-                    moveRight()
-                }
-
-            }
-
-            initLeft()
-    
-        }
-
-        moveRight()              
+        // })
 
     },
+
     draw(){
 
         for (i = 0; i < obstacleArray.length; i++) {
@@ -145,13 +149,3 @@ const obstacles = {
 
     }
 }
-
-function createObstacle(x, y, dx, dy, width, height) {
-    this.x = x
-    this.y = y
-    this.dx = dx
-    this.dy = dy
-    this.width = width
-    this.height = height
-}
-

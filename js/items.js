@@ -29,18 +29,18 @@ const items = {
 
             for (i = 0; i < itemsSpringcoilArray.length; i++) {
 
-                springcoilItem = new createObstacle(itemsSpringcoilArray[i].x + 10, itemsSpringcoilArray[i].y - 30, 30, 30)
+                springcoilItem = new createObstacle(itemsSpringcoilArray[i].x + 10, itemsSpringcoilArray[i].y - 30, 0, 0, 30, 30)
                 springcoilArray.push(springcoilItem)
-                
-            }
 
+            }
+            
         } else if (Math.random() * 10 <= 0.2 && items.hasSpawned === false && items.inUse === false) {
 
             itemsHelicopterArray.push(obstacleAmountSpecial)
 
             for (i = 0; i < itemsHelicopterArray.length; i++) {
 
-                helicopterItem = new createObstacle(itemsHelicopterArray[i].x + 10, itemsHelicopterArray[i].y - 30, 30, 30)
+                helicopterItem = new createObstacle(itemsHelicopterArray[i].x + 10, itemsHelicopterArray[i].y - 30, 0, 0, 30, 30)
                 helicopterArray.push(helicopterItem)
                 
             }
@@ -51,7 +51,7 @@ const items = {
 
             for (i = 0; i < itemsJumpbootsArray.length; i++) {
 
-                jumpbootsItem = new createObstacle(itemsJumpbootsArray[i].x + 10, itemsJumpbootsArray[i].y - 30, 30, 30)
+                jumpbootsItem = new createObstacle(itemsJumpbootsArray[i].x + 10, itemsJumpbootsArray[i].y - 30, 0, 0, 30, 30)
                 jumpbootsArray.push(jumpbootsItem)
                 
             }
@@ -62,7 +62,7 @@ const items = {
 
             for (i = 0; i < itemsJetpackArray.length; i++) {
 
-                jetpackItem = new createObstacle(itemsJetpackArray[i].x + 10, itemsJetpackArray[i].y - 30, 30, 30)
+                jetpackItem = new createObstacle(itemsJetpackArray[i].x + 10, itemsJetpackArray[i].y - 30, 0, 0, 30, 30)
                 jetpackArray.push(jetpackItem)
                 
             }
@@ -132,7 +132,7 @@ const items = {
             }
 
         }
-
+        
     },
     update(progress) {
 
@@ -154,6 +154,13 @@ const items = {
             })
 
         }  
+
+        for (i = 0; i < springcoilArray.length; i++) {
+            
+            springcoilArray[i].x += springcoilArray[i].dx
+
+            
+        }
 
     },
     draw() {
@@ -187,8 +194,9 @@ const items = {
                 player.x + player.width >= springcoilArray[i].x && player.x - player.width < springcoilArray[i].x && player.dy > 0.3 && items.inUse === false) {
                     
                     player.dy = player.jumpPower * 1.5
-                    let start = Date.now()
+                    springSound.play()
                     items.inUse = true
+                    let start = Date.now()
                     
                     let initSpringcoil = () => {
 
@@ -283,6 +291,7 @@ const items = {
             if (player.y + player.height > helicopterArray[i].y && player.y + player.height - 5 < helicopterArray[i].y + helicopterArray[i].height &&
                 player.x + player.width >= helicopterArray[i].x && player.x - player.width < helicopterArray[i].x && items.inUse === false) {
                     
+                    heliSound.play()
                     let start = Date.now()
                     items.inUse = true
                     helicopterArray.splice(i, 1)
@@ -335,7 +344,7 @@ const items = {
 
                         current = Date.now()
 
-                        if (current - start < 5000) {
+                        if (current - start < 3000) {
                             requestAnimationFrame(initHelicopter)
                         } else {
                             items.inUse = false
@@ -360,6 +369,7 @@ const items = {
             if (player.y + player.height > jetpackArray[i].y && player.y + player.height - 5 < jetpackArray[i].y + jetpackArray[i].height &&
                 player.x + player.width >= jetpackArray[i].x && player.x - player.width < jetpackArray[i].x && items.inUse === false) {
                     
+                    jetSound.play()
                     let start = Date.now()
                     items.inUse = true
                     jetpackArray.splice(i, 1)
@@ -412,7 +422,7 @@ const items = {
 
                         current = Date.now()
 
-                        if (current - start < 3500) {
+                        if (current - start < 2500) {
                             requestAnimationFrame(initJetpack)
                         } else {
                             
@@ -445,7 +455,7 @@ const items = {
                                 
                                 let current = Date.now()
 
-                                if (current - start < 1500) {
+                                if (current - start < 500) {
                                     requestAnimationFrame(initJetpackSlow)
                                 } else {
                                     items.inUse = false
@@ -529,6 +539,7 @@ const items = {
             if (player.y + player.height > obstacleArray[i].y && player.y + player.height - 20 < obstacleArray[i].y + obstacleArray[i].height
                 && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 1 && items.usingJumpBoots === true) {
                 
+                bootsSound.play()
                 player.dy = player.jumpPower
                 let start = Date.now()
                 

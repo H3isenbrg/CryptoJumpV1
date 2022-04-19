@@ -4,28 +4,37 @@ const scoreTracker = {
     lowerNumber: 0.1,
     createLvl() {
 
-        // if (this.scoreRounded < 500) {
+        if (this.scoreRounded > 0) {
 
-        //     if (obstacleArray[obstacleArray.length - 1].y >= 125) {
+            if (obstacleArray[obstacleArray.length - 1].y >= 125) {
         
-        //         obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
+                // obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
     
-        //         obstacleArray.push(obstacleAmount)
+                // obstacleArray.push(obstacleAmount)
 
-        //         obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
+                // if (Math.random() * 10 < 2) {
+                //     obstacleAmount.move()
+                // }
+
+                // obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
     
-        //         obstacleArray.push(obstacleAmount)
+                // obstacleArray.push(obstacleAmount)
+
+                // if (Math.random() * 10 < 2) {
+                //     obstacleAmount.move()
+                // }
+                        
+
+                obstacleAmountSpecial = new createObstacle(Math.random() * 449, -10, 0, 0, 50, 15)
     
-        //         obstacleAmountSpecial = new createObstacle(Math.random() * 449, -10, 0, 0, 50, 15)
+                obstacleArray.push(obstacleAmountSpecial)
+              
+                items.spawn() 
     
-        //         obstacleArray.push(obstacleAmountSpecial)
-    
-        //         items.spawn() 
-    
-        //     }
+            }
 
 
-        // }
+        }
 
         // if (this.scoreRounded > 500 && this.scoreRounded < 1000) {
 
@@ -59,24 +68,24 @@ const scoreTracker = {
 
         // }
         
-        if (this.scoreRounded > 0) {
+        // if (this.scoreRounded > 0) {
 
-            if (obstacleArray[obstacleArray.length - 1].y >= 125) {
+        //     if (obstacleArray[obstacleArray.length - 1].y >= 125) {
                 
-                // if (Math.random() * 10 < 5) {
-                //     obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
-                //     obstacleArray.push(obstacleAmount)
-                //     obstacleMovingArray.push(obstacleAmount)
-                // }
+        //         // if (Math.random() * 10 < 5) {
+        //         //     obstacleAmount = new createObstacle(Math.random() * 449, Math.random() * -1000, 0, 0, 50, 15)
+        //         //     obstacleArray.push(obstacleAmount)
+        //         //     obstacleMovingArray.push(obstacleAmount)
+        //         // }
               
-                obstacleAmountSpecial = new createObstacle(Math.random() * 449, -10, 0, 0, 50, 15)                
-                obstacleArray.push(obstacleAmountSpecial)
-                obstacleMovingArray.push(obstacleAmountSpecial)
+        //         obstacleAmountSpecial = new createObstacle(Math.random() * 449, -10, 0, 0, 50, 15)                
+        //         obstacleArray.push(obstacleAmountSpecial)
+        //         obstacleMovingArray.push(obstacleAmountSpecial)
                 
             
-            }
+        //     }
 
-        }
+        // }
 
     },
     draw() {

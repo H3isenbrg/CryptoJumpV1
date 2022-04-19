@@ -6,7 +6,7 @@ const player = {
     width: 50,
     height: 70,
     jumpPower: -1,
-    moveSpeed: 0.4,
+    moveSpeed: 0.5,
     gravity: 0.003,
     xDrag: 0.9,
     // color: '#dd1111',
@@ -38,8 +38,10 @@ const player = {
     },
     jump() {
 
-        if (player.y < 300 && items.inUse === false) {
+        if (player.y < 300 && player.y > 0 && items.inUse === false) {
             player.jumpPower = -0.85
+        }  if (player.y < 0) {
+            player.y = 0
         }  else {
             player.jumpPower = -1
         }
@@ -50,6 +52,7 @@ const player = {
                 && player.x + player.width >= obstacleArray[i].x && player.x - player.width < obstacleArray[i].x && player.dy > 0.5 && items.inUse === false) {
                     
                 player.dy = player.jumpPower;
+                jumpSound.play();
 
             } 
 
@@ -65,6 +68,7 @@ const player = {
      
     endGame() {
         if (this.y + player.height >= canvas.height) {
+            // lostSound.play();
             alert('Game over - your score is')
             player.start()     
         }

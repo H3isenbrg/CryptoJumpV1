@@ -9,7 +9,6 @@ function drawRect(x, y, width, height, color) {
 const initGame = (() => {
     player.start()
     obstacles.createStart()
-    obstacles.move()
 })()
 
 function update(progress) {
