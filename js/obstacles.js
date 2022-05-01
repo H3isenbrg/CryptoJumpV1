@@ -1,26 +1,25 @@
 let obstacleArray = []
 
-function createObstacle(x, y, dx, dy, width, height, type) {
+function createObstacle(x, y, dx, dy, width, height) {
     this.x = x
     this.y = y
     this.dx = dx
     this.dy = dy
     this.width = width
     this.height = height
-    this.type = type
     this.move = function () {
 
-        let moveRight = () => {
+         let moveRight = () => {
 
             let start = Date.now()
 
             let initRight = () => {
 
-                this.dx = 1.5
+                this.dx = 0.125
                 
                 let current = Date.now()
                 
-                if(current - start < 1000) {
+                if(current - start < 1500) {
                     requestAnimationFrame(initRight)
                 } else {
                     moveLeft()
@@ -37,11 +36,11 @@ function createObstacle(x, y, dx, dy, width, height, type) {
 
             let initLeft = () => {
 
-                this.dx = -1.5
+                this.dx = -0.125
 
                 let current = Date.now()
 
-                if(current - start < 1000) {
+                if(current - start < 1500) {
                     requestAnimationFrame(initLeft)
                 } else {
                     moveRight()
@@ -55,7 +54,55 @@ function createObstacle(x, y, dx, dy, width, height, type) {
 
         moveRight()             
 
-    }
+    },
+    this.moveVertical = function () {
+
+        let moveRight = () => {
+
+           let start = Date.now()
+
+           let initRight = () => {
+
+               this.dy = 0.125
+               
+               let current = Date.now()
+               
+               if(current - start < 1500) {
+                   requestAnimationFrame(initRight)
+               } else {
+                   moveLeft()
+               }
+           
+           }
+
+           initRight()
+       }
+
+       let moveLeft = () => {
+
+           let start = Date.now()
+
+           let initLeft = () => {
+
+               this.dy = -0.125
+
+               let current = Date.now()
+
+               if(current - start < 1500) {
+                   requestAnimationFrame(initLeft)
+               } else {
+                   moveRight()
+               }
+
+           }
+
+           initLeft()
+   
+       }
+
+       moveRight()             
+
+   }
 }
 
 const obstacles = {
@@ -86,7 +133,9 @@ const obstacles = {
 
         for (i = 0; i < obstacleArray.length; i++) {
             
-            obstacleArray[i].x += obstacleArray[i].dx
+            obstacleArray[i].x += progress * obstacleArray[i].dx
+
+            obstacleArray[i].y += progress * obstacleArray[i].dy
 
             if (obstacleArray[i].x < - obstacles.width && obstacleArray[i].dx < 0) {
                 obstacleArray[i].x = canvas.width

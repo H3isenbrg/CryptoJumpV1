@@ -9,6 +9,9 @@ function drawRect(x, y, width, height, color) {
 const initGame = (() => {
     player.start()
     obstacles.createStart()
+    fireballs.spawn()
+    monsters.spawn()
+
 })()
 
 function update(progress) {
@@ -22,6 +25,11 @@ function update(progress) {
     items.helicopter(progress)
     items.jetpack(progress)
     items.jumpBoots(progress)
+    fireballs.update(progress)
+    monsters.update(progress)
+    gun.update(progress)
+    
+    
 }
 
 function draw() {
@@ -33,7 +41,14 @@ function draw() {
     obstacles.draw()
     items.draw()
     player.draw()
+    fireballs.draw()
+    monsters.draw()
     
+    
+    gun.draw()
+
+
+
 }
 
 function loop(timestamp) {

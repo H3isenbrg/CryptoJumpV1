@@ -17,14 +17,14 @@ const items = {
     speed: 0.42,
     color: '#dd1111',
     spawn() {
-
+        
         if (itemsSpringcoilArray.length === 0 && itemsHelicopterArray.length === 0 && itemsJetpackArray.length === 0 && itemsJumpbootsArray.length === 0) {
             items.hasSpawned = false
         } else {
             items.hasSpawned = true
         }
 
-        if (Math.random() * 10 <= 2 && items.hasSpawned === false && items.inUse === false) {
+        if (Math.random() * 10 <= 2 && items.hasSpawned === false && items.inUse === false && fireballs.upcoming === false && monsters.upcoming === false) {
             itemsSpringcoilArray.push(obstacleAmountSpecial)
 
             for (i = 0; i < itemsSpringcoilArray.length; i++) {
@@ -34,7 +34,7 @@ const items = {
 
             }
             
-        } else if (Math.random() * 10 <= 0.2 && items.hasSpawned === false && items.inUse === false) {
+        } else if (Math.random() * 10 <= 0.2 && items.hasSpawned === false && items.inUse === false && fireballs.upcoming === false && monsters.upcoming === false) {
 
             itemsHelicopterArray.push(obstacleAmountSpecial)
 
@@ -45,7 +45,7 @@ const items = {
                 
             }
 
-        } else if (Math.random() * 10 <= 0.1 && items.hasSpawned === false && items.inUse === false) {
+        } else if (Math.random() * 10 <= 0.1 && items.hasSpawned === false && items.inUse === false && fireballs.upcoming === false && monsters.upcoming === false) {
 
             itemsJumpbootsArray.push(obstacleAmountSpecial)
 
@@ -56,7 +56,7 @@ const items = {
                 
             }
 
-        } else if (Math.random() * 10 <= 0.05 && items.hasSpawned === false && items.inUse === false) {
+        } else if (Math.random() * 10 <= 0.05 && items.hasSpawned === false && items.inUse === false && fireballs.upcoming === false && monsters.upcoming === false) {
 
             itemsJetpackArray.push(obstacleAmountSpecial)
 
@@ -223,6 +223,30 @@ const items = {
                             value.y += progress * 1.1
                         })
 
+                        for (i = 0; i < fireballArray.length; i++) {
+                            
+                            if (fireballArray[i].y >= -150) {
+
+                                fireballArray.map((value) => {
+                                    value.y += progress * 1.1
+                                })
+
+                            }
+                        
+                        }
+
+                        for (i = 0; i < monsterArray.length; i++) {
+                            
+                            if (monsterArray[i].y >= -150) {
+
+                                monsterArray.map((value) => {
+                                    value.y += progress * 1.1
+                                })
+
+                            }
+                        
+                        }
+
                         current = Date.now()
 
                         if (current - start < 500) {
@@ -257,7 +281,31 @@ const items = {
                                 jetpackArray.map((value) => {
                                 value.y += progress * 0.5
                                 })
+
+                                for (i = 0; i < fireballArray.length; i++) {
+                            
+                                    if (fireballArray[i].y >= -150) {
+        
+                                        fireballArray.map((value) => {
+                                            value.y += progress * 0.5
+                                        })
+        
+                                    }
                                 
+                                }
+
+                                for (i = 0; i < monsterArray.length; i++) {
+                            
+                                    if (monsterArray[i].y >= -150) {
+        
+                                        monsterArray.map((value) => {
+                                            value.y += progress * 0.5
+                                        })
+        
+                                    }
+                                
+                                }
+
                                 let current = Date.now()
                                 
                                 if (current - start < 250) {
@@ -308,7 +356,6 @@ const items = {
                             player.dy = 0
                         }
                                      
-
                         current = Date.now()
 
                         if (current - start < 1000) {
@@ -341,6 +388,30 @@ const items = {
                         jetpackArray.map((value) => {
                             value.y += progress * 0.75
                         })
+
+                        for (i = 0; i < fireballArray.length; i++) {
+                            
+                            if (fireballArray[i].y >= -150) {
+
+                                fireballArray.map((value) => {
+                                    value.y += progress * 0.75
+                                })
+
+                            }
+                        
+                        }
+
+                        for (i = 0; i < monsterArray.length; i++) {
+                            
+                            if (monsterArray[i].y >= -150) {
+
+                                monsterArray.map((value) => {
+                                    value.y += progress *  0.75
+                                })
+
+                            }
+                        
+                        }
 
                         current = Date.now()
 
@@ -419,7 +490,31 @@ const items = {
                         jetpackArray.map((value) => {
                             value.y += progress * 3
                         })
+                        
+                        for (i = 0; i < fireballArray.length; i++) {
+                            
+                            if (fireballArray[i].y >= -150) {
 
+                                fireballArray.map((value) => {
+                                    value.y += progress * 3
+                                })
+
+                            }
+                        
+                        }
+
+                        for (i = 0; i < monsterArray.length; i++) {
+                            
+                            if (monsterArray[i].y >= -150) {
+
+                                monsterArray.map((value) => {
+                                    value.y += progress *  3
+                                })
+
+                            }
+                        
+                        }
+                      
                         current = Date.now()
 
                         if (current - start < 2500) {
@@ -452,7 +547,31 @@ const items = {
                                 jetpackArray.map((value) => {
                                     value.y += progress * 0.5
                                 })
+
+                                for (i = 0; i < fireballArray.length; i++) {
+                            
+                                    if (fireballArray[i].y >= -150) {
+        
+                                        fireballArray.map((value) => {
+                                            value.y += progress * 0.5
+                                        })
+                                            
+                                    }
                                 
+                                }
+
+                                for (i = 0; i < monsterArray.length; i++) {
+                            
+                                    if (monsterArray[i].y >= -150) {
+        
+                                        monsterArray.map((value) => {
+                                            value.y += progress *  0.5
+                                        })
+        
+                                    }
+                                
+                                }
+                            
                                 let current = Date.now()
 
                                 if (current - start < 500) {
@@ -568,6 +687,30 @@ const items = {
                         value.y += progress * 1.1
                     })
 
+                    for (i = 0; i < fireballArray.length; i++) {
+                            
+                        if (fireballArray[i].y >= -150) {
+
+                            fireballArray.map((value) => {
+                                value.y += progress * 1.1
+                            })
+
+                        }
+                    
+                    }
+
+                    for (i = 0; i < monsterArray.length; i++) {
+                            
+                        if (monsterArray[i].y >= -150) {
+
+                            monsterArray.map((value) => {
+                                value.y += progress *  1.1
+                            })
+
+                        }
+                    
+                    }
+
                     current = Date.now()
 
                     if (current - start < 500) {
@@ -602,6 +745,30 @@ const items = {
                             jetpackArray.map((value) => {
                                 value.y += progress * 0.5
                             })
+
+                            for (i = 0; i < fireballArray.length; i++) {
+                            
+                                if (fireballArray[i].y >= -150) {
+        
+                                    fireballArray.map((value) => {
+                                        value.y += progress * 0.5
+                                    })
+
+                                }
+                            
+                            }
+
+                            for (i = 0; i < monsterArray.length; i++) {
+                            
+                                if (monsterArray[i].y >= -150) {
+    
+                                    monsterArray.map((value) => {
+                                        value.y += progress *  0.5
+                                    })
+    
+                                }
+                            
+                            }
                                 
                             let current = Date.now()
                                 
