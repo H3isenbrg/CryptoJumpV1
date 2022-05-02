@@ -2,5 +2,34 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: hsla(238, 74%, 9%, 0.79);
+    background-color: #F6F0EB;
+    font-size: 25px;
+}
+
+.menu {
+    width: 500px;
+    height: 700px;
+    background-color: grey;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.8;
+}
+
+.button {
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#replay {
+    visibility: hidden;
 }

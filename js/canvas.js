@@ -14,6 +14,10 @@ canvas.style.top = '0'
 canvas.style.bottom = '0'
 canvas.style.left = '0'
 canvas.style.right = '0'
+canvas.style.borderStyle = 'solid'
+canvas.style.borderColor = 'grey'
+canvas.style.borderWidth = '10px'
+canvas.style.borderRadius = '10px'
 
 const doodle = document.createElement('img')
 doodle.src = 'src/images/doodler.png'

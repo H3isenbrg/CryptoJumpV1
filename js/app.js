@@ -1,3 +1,12 @@
+const initGame = () => {
+    obstacles.createStart()
+    player.start()
+    
+    fireballs.spawn()
+    monsters.spawn()
+
+}
+
 function drawRect(x, y, width, height, color) {
     ctx.beginPath();
     ctx.rect(x, y, width, height);
@@ -5,14 +14,6 @@ function drawRect(x, y, width, height, color) {
     ctx.fill();
     ctx.closePath();
 }
-
-const initGame = (() => {
-    player.start()
-    obstacles.createStart()
-    fireballs.spawn()
-    monsters.spawn()
-
-})()
 
 function update(progress) {
     player.update(progress)
@@ -52,6 +53,9 @@ function draw() {
 }
 
 function loop(timestamp) {
+
+    if (player.gameOver === true) {return}
+
     let progress = timestamp - lastRender
     update(progress)
     draw()
@@ -60,5 +64,11 @@ function loop(timestamp) {
     requestAnimationFrame(loop)
 }
 let lastRender = 0
-requestAnimationFrame(loop)
+
+function initLoop() {
+
+    
+    requestAnimationFrame(loop)
+}
+
 

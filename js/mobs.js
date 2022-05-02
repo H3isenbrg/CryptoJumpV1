@@ -109,11 +109,11 @@ let fireballs = {
     
     for (i = 0; i < fireballArray.length; i++) {
 
-        if (fireballArray[0].y >= -1000) {
-            fireballs.upcoming = true
-        } else if (fireballArray[0].y <= -1000) {
-            fireballs.upcoming = false
-        } 
+        // if (fireballArray[0].y >= -1000) {
+        //     fireballs.upcoming = true
+        // } else if (fireballArray[0].y <= -1000) {
+        //     fireballs.upcoming = false
+        // } 
 
         if (fireballArray[i].y >= -150 && items.inUse == false) {
             fireballArray[i].y += progress * 0.3
@@ -123,9 +123,8 @@ let fireballs = {
             fireballSound.play();
         }
         
-            
         if (fireballArray[i].y >= 1000) {
-            fireballArray.splice(i, 1) 
+            fireballArray.splice(i, 1)
             }
         
         if (player.y + player.height > fireballArray[i].y && player.y + player.height - 50 < fireballArray[i].y + fireballs.height &&

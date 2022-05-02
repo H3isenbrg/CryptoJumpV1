@@ -9,10 +9,11 @@ const player = {
     moveSpeed: 0.5,
     gravity: 0.003,
     xDrag: 0.9,
+    gameOver: false, 
     // color: '#dd1111',
     start() {
         this.x = ctx.canvas.width / 2 - this.width / 2;
-        this.y = ctx.canvas.height - 200
+        this.y = ctx.canvas.height - 250
         this.dx = 0;
         this.dy = 0;    
     },
@@ -67,10 +68,23 @@ const player = {
     },
      
     endGame() {
-        if (this.y + player.height >= canvas.height) {
+        if (this.y + player.height > canvas.height) {
+
+            player.gameOver = true
+            gameOver()
+
+
+
+
+
+
+
+
             // lostSound.play();
-            alert('Game over - your score is')
-            player.start()     
+            // alert('Game over - your score is')
+            // player.start()     
+
+            
         }
     }
 }
