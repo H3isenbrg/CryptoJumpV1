@@ -127,6 +127,8 @@ let fireballs = {
             fireballArray.splice(i, 1)
             }
         
+            //Below needs to be solved - getting bug when last fireball gets sent because of "+ fireballs.height in combination with [i] + y "
+
         if (player.y + player.height > fireballArray[i].y && player.y + player.height - 50 < fireballArray[i].y + fireballs.height &&
             player.x + player.width >= fireballArray[i].x && player.x - player.width <= fireballArray[i].x && items.inUse === false) {
               
@@ -222,9 +224,9 @@ let monsters = {
             
             })
 
-            if (monsterArray[i].y >= 1000) {
-                monsterArray.splice(i, 1) 
-                }
+            // if (monsterArray[i].y >= 1000) {
+            //     monsterArray.splice(i, 1) 
+            //     }
             
 
         }

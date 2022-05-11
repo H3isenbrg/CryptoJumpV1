@@ -3,33 +3,121 @@
     margin: 0;
     padding: 0;
     background-color: #F6F0EB;
-    font-size: 25px;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Sniglet', cursive;
+    color: white;
+}
+
+
+
+.scorecontainer1 {
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -820%);
+    width: 500px;
+
+    
+}
+
+.scorecontainer2 {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(30.5%, -820%);
+
+   
 }
 
 .menu {
     width: 500px;
     height: 700px;
-    background-color: grey;
+    background-color: #352e29;
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 0.8;
 }
 
 .button {
-    width: 150px;
-    height: 50px;
+    width: 350px;
+    height: 75px;
     position: absolute;
     margin: auto;
-    top: 0;
-    bottom: 0;
+    top: 50%;
     left: 0;
     right: 0;
+    background-color: #6EBB1D;
+    border-radius: 10px;
+}
+
+#currentscore {  
+    width: 100px;
+    height: 50px;
+    background-color: #6EBB1D;
+    margin-left: 60%;
+
+   
+    border-top-left-radius: 20px;    
+    border-top-right-radius: 20px;
+}
+
+#bestscore {
+    width: 100px;
+    height: 50px;
+    background-color: #6EBB1D;
+    border-top-left-radius: 20px;    
+    border-top-right-radius: 20px;
+}
+
+h1 {
+    font-size: 80px;
+    background-color: #352e29;
+    text-align:center;
+    margin-top: 15%;
+
+}
+
+h2 {
+   
+    background-color: #6EBB1D;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 20px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Sniglet', cursive;
+    font-weight: 400;
+    background-color: #352e29;
+    text-align: center;
+    margin-top: 15%;
+    font-size: 40px;
+
+}
+
+#controls {
+    text-align:center;
+    top: 65%;
+}
+
+#highscore {
+    top: 80%;
 }
 
 #replay {
     visibility: hidden;
 }
+
+#backButton {
+    top: 80%;
+}
+

@@ -66,8 +66,8 @@ function bulletConstructor(angle, x, y, progress) {
     this.angle = angle;
     this.x = x;
     this.y = y;
-    this.dx = Math.cos(angle) * progress;
-    this.dy = Math.sin(angle) * progress;
+    this.dx = Math.cos(angle) * progress * 2.5;
+    this.dy = Math.sin(angle) * progress * 2.5;
     this.progress = progress
 
     this.move = function() {

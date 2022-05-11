@@ -2,6 +2,10 @@ const scoreTracker = {
     score: 0, 
     scoreRounded: 0,
     lowerNumber: 0.1,
+    highscore: 0,
+    trackHighscore() {
+        this.scoreRounded = this.highscore
+    },
     createLvl() {
 
         if (this.scoreRounded < 500) {
@@ -111,8 +115,21 @@ const scoreTracker = {
 
     },
     draw() {
-        ctx.fillStyle = 'black'
-        ctx.font = '40px arial'
-        ctx.fillText('Score:' + this.scoreRounded, 10, 40, 100);
+        // ctx.fillStyle = 'black'
+        // ctx.font = '40px arial'
+        // ctx.fillText(this.scoreRounded, 10, 40, 100);
+
+        let currentScore = document.getElementById('scorenumber1')
+        currentScore.innerText = scoreTracker.scoreRounded
+
+        let bestScore = document.getElementById('scorenumber2')
+        if (scoreTracker.scoreRounded > scoreTracker.highscore) {
+            bestScore.innerText = scoreTracker.scoreRounded
+        }
+
     }
 }
+
+
+
+console.log(currentScore)

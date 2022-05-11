@@ -15,7 +15,7 @@ canvas.style.bottom = '0'
 canvas.style.left = '0'
 canvas.style.right = '0'
 canvas.style.borderStyle = 'solid'
-canvas.style.borderColor = 'grey'
+canvas.style.borderColor = '#352e29'
 canvas.style.borderWidth = '10px'
 canvas.style.borderRadius = '10px'
 
