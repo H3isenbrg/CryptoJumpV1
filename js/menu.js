@@ -10,6 +10,9 @@ playButton.addEventListener('click', startGame)
 controlsButton.addEventListener('click', showControls)
 backButton.addEventListener('click', restartGame)
 
+let bestScore = document.getElementById('scorenumber2')
+bestScore.innerText = localStorage.getItem('highscore')
+
 function startGame() {
     menu.style.visibility = 'hidden'
     playButton.style.visibility = 'hidden'
@@ -41,6 +44,7 @@ function restartGame() {
 }
 
 function gameOver() {
+    scoreTracker.trackHighscore()
     playButton.style.visibility = 'hidden'
     controlsButton.style.visibility = 'hidden'
     highscoreButton.style.visibility = 'hidden'
